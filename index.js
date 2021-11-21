@@ -91,7 +91,7 @@ app.set('views', './views');
 app.get('/',  async (req, res) => {
     
     // const params = {"a1": "Avariable", "a2": "Avariable", "a3": "Avariable"};
-    // res.render('index', params);
+    // res.render('index', params); 
 
     try{
 //        runGetSeats();
