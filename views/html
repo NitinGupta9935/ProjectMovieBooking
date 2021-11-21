@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title> Movie Booking Website</title>
+        <link rel="stylesheet" href="Start.css">
+        
+    </head>
+    <body>
+
+        <table style="width: 50%; height: 500; margin-left: auto; margin-right: auto;">
+            <tr>
+                <td> A </td>
+                <td> B </td>
+                <td> C </td>
+                
+                <td>  Interval </td>
+                
+                <td> D </td>
+                <td> E </td>
+                <td> F </td>
+            </tr>
+            <form>
+            <tr>
+                <td id="a1"> <br> a1 </td>
+                <td id="a2"> <br> a2 </td>
+                <td id="a3"> <br> a3 </td>
+                
+                <td>   </td>
+                
+                <td id="a4"> <br> a4 </td>
+                <td id="a5"> <br> a5 </td>
+                <td id="a6"> <br> a6 </td>
+            </tr>
+            <tr>
+                <td id="b1"> <br> b1 </td>
+                <td id="b2"> <br> b2 </td>
+                <td id="b3"> <br> b3 </td>
+                
+                <td>   </td>
+                
+                <td id="b4"> <br> b4 </td>
+                <td id="b5"> <br> b5 </td>
+                <td id="b6"> <br> b6 </td>
+            </tr>
+            <tr>
+                <td id="c1"> <br> c1 </td>
+                <td id="c2"> <br> c2 </td>
+                <td id="c3"> <br> c3 </td>
+                
+                <td>   </td>
+                
+                <td id="c4"> <br> c4 </td>
+                <td id="c5"> <br> c5 </td>
+                <td id="c6"> <br> c6 </td>
+            </tr>
+            <tr>
+                <td id="d1"> <br> d1 </td>
+                <td id="d2"> <br> d2 </td>
+                <td id="d3"> <br> d3 </td>
+                
+                <td>   </td>
+                
+                <td id="d4"> <br> d4 </td>
+                <td id="d5"> <br> d5 </td>
+                <td id="d6"> <br> d6 </td>
+            </tr>
+            <tr>
+                <td id="e1"> <br> e1 </td>
+                <td id="e2"> <br> e2 </td>
+                <td id="e3"> <br> e3 </td>
+                
+                <td>   </td>
+                
+                <td id="e4"> <br> e4 </td>
+                <td id="e5"> <br> e5 </td>
+                <td id="e6"> <br> e6 </td>
+            </tr>
+            <tr>
+                <td id="f1"> <br> f1 </td>
+                <td id="f2"> <br> f2 </td>
+                <td id="f3"> <br> f3 </td>
+                
+                <td>   </td>
+                
+                <td id="f4"> <br> f4 </td>
+                <td id="f5"> <br> f5 </td>
+                <td id="f6"> <br> f6 </td>
+            </tr>
+        </table>
+        
+        <datalist id="browsers">
+            <option value="a1">
+            <option value="a2">
+            <option value="a3">
+            <option value="a4">
+            <option value="a5">
+            <option value="a6">
+
+            <option value="b1">
+            <option value="b2">
+            <option value="b3">
+            <option value="b4">
+            <option value="b5">
+            <option value="b6">
+            
+            <option value="c1">
+            <option value="c2">
+            <option value="c3">
+            <option value="c4">
+            <option value="c5">
+            <option value="c6">
+            
+            <option value="d1">
+            <option value="d2">
+            <option value="d3">
+            <option value="d4">
+            <option value="d5">
+            <option value="d6">
+            
+            <option value="e1">
+            <option value="e2">
+            <option value="e3">
+            <option value="e4">
+            <option value="e5">
+            <option value="e6">
+            
+            <option value="f1">
+            <option value="f2">
+            <option value="f3">
+            <option value="f4">
+            <option value="f5">
+            <option value="f6">
+        </datalist>
+        <div style="text-align: center;">
+        <input type="button" onclick="s()" value="Click Me!"> button
+        </div>
+    </form>
+    
+    <form action="http://localhost:3000/a" method="POST">
+        <input type="text" placeholder="Name" name="seatName"/>
+        <input type="text" placeholder="Number" name="mobileNumber"/>
+        <button type="submit"> Submit </button>
+        </form>
+
+        form(method='POST', action='/book')
+        input(type='text', placeholder='Name', name='seatName')
+        input(type='text', placeholder='Number', name='mobileNumber')
+        input( type='submit', value='Send')
+
+
+    </body>
+</html>
