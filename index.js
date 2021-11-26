@@ -1,10 +1,12 @@
+const { request } = require('express');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.connect('mongodb://localhost/Movie-Booking')
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to Database!!!', err));
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Could not connect to Database!!!', err));
 
 const seatSchema = new mongoose.Schema({
     seatName: String,
@@ -20,47 +22,47 @@ async function createSeat(seat_name, mobile_number){
         mobileNumber: mobile_number, 
         isBooked: false
     });
-
+    
     const result = await seat.save();
     console.log(result);
 }
 
 function createSeats(){
-    for(let i = 1; i < 7; i++)
-        for(let j = 1; j < 7; j++){
-            if(i % 7 == 1)
-            createSeat('a' + j, 9900);
-            if(i % 7 == 2)
-            createSeat('b' + j, 9900);
-            if(i % 7 == 3)
-            createSeat('c' + j, 9900);
-            if(i % 7 == 4)
-            createSeat('d' + j, 9900);
-            if(i % 7 == 5)
-            createSeat('e' + j, 9900);
-            if(i % 7 == 0)
-            createSeat('f' + j, 9900);
-        }
+    for(let i = 0; i < 7; i++)
+    for(let j = 1; j < 7; j++){
+        if(i % 7 == 1)
+        createSeat('a' + j, 0000);
+        if(i % 7 == 2)
+        createSeat('b' + j, 9900);
+        if(i % 7 == 3)
+        createSeat('c' + j, 9900);
+        if(i % 7 == 4)
+        createSeat('d' + j, 9900);
+        if(i % 7 == 5)
+        createSeat('e' + j, 9900);
+        if(i % 7 == 0)
+        createSeat('f' + j, 9900);
+    }
 }   
 // createSeats();
-
-
+    
+    
 async function getSeats(){
-    return await Seats.find();
+return await Seats.find();
 }
 
 async function runGetSeats(){
     let avariableSeats = [];
     try{
-    const seats = await getSeats();
-    let count = 0;
+        const seats = await getSeats();
+        let count = 0;
     // seats[0]["seatName"]
     for(let i = 0; i < 36; i++){
-         if(seats[i]["isBooked"] == false){
-        avariableSeats.push(seats[i]["seatName"]);
-//        console.log(seats[i]["seatName"]);
-        count++;
-         }
+        if(seats[i]["isBooked"] == false){
+            avariableSeats.push(seats[i]["seatName"]);
+            //        console.log(seats[i]["seatName"]);
+            count++;
+        }
     }
 }
 catch(error){
@@ -68,35 +70,29 @@ catch(error){
 }
 return avariableSeats;
 
-    //console.log(seats[29]["seatName"], count);
+//console.log(seats[29]["seatName"], count);
 //res.redirect('/Booking');
 }
-runGetSeats();
+// runGetSeats();
 
-async function output(){
-    const value = await avariableSeats;
-    console.log(avariableSeats);
-}
-//output();
 
-app.use(express.json());
-
-function submit(){
-   console.log("Submit Button click!!! "); 
-}
-
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.get('/',  async (req, res) => {
+// app.use(express.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+
+
+app.get('/', async (req, res) => {
     
     // const params = {"a1": "Avariable", "a2": "Avariable", "a3": "Avariable"};
     // res.render('index', params); 
 
     try{
-//        runGetSeats();
+       await runGetSeats();
     //    console.log(avariableSeats);
-        res.render('index',await params());
+        res.render('in',await params());
     }
     catch(error) {
          console.log("error in get=> " + error.message)
@@ -111,7 +107,7 @@ async function updateBooking(seat_name, mobile_number){
             isBooked: true
         }
     });
-    console.log("save");
+    console.log("Booked");
     }
     catch(err) {
         console.log("error " + err.message);
@@ -120,15 +116,15 @@ async function updateBooking(seat_name, mobile_number){
 
 
 app.post('/book', async (req, res) => {
-    console.log("Post ");
-    // res.redirect('/');
+    console.log(req.body.seatName);
+    //res.redirect('/');
 
-    updateBooking(req.body.seatName, req.body.mobileNumber);
+    await updateBooking(req.body.seatName, req.body.mobileNumber);
 
-    avariableSeats = null;
-    await runGetSeats();
+    // avariableSeats = null;
+    // await runGetSeats();
     // updateBooking("a6", "4561");
-   res.redirect("/");
+   await res.redirect("/");
 });
 
 
@@ -185,3 +181,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+

@@ -1,4 +1,0 @@
-<form action="/registration" method="POST">
-
-<input type="text" class="form-control" placeholder="First Name" value="" name="email" />
-
