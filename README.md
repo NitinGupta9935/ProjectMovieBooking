@@ -1,4 +1,4 @@
-ProjectMovieBooking
+# Book My Movie
 
 Online Movie ticket booking platform.
 
